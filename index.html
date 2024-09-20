@@ -46,10 +46,16 @@
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
               <tr>
               <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>News</h2>
-                <p>
-                  My research interests include computer vision, deep learning, and radiance fields.
-                </p>
+              <h2>News</h2>
+              <ul style="font-size: 16px;">
+              <li>09/2024: Serves as a reviewer for AAAI 2025</li>
+              <li>06/2024: Serves as a reviewer for NeurIPS 2025</li>
+              <li>06/2024: Serves as a reviewer for Transactions on Artificial Intelligence</li>
+              <li>04/2024: Serves as a reviewer for ICRA RoboNeRF 2024</li>
+              <li>03/2024: Awarded the Taiwan Government Scholarship to study abroad 2024-2026</li>
+              <li>02/2024: One paper accepted by CVPR 2024 Highlight</li>
+              <li>01/2024: Serves as a reviewer for <a href="https://cvpr.thecvf.com/Conferences/2024/ProgramCommittee" style="font-size: 16px;">CVPR</a> 2024.</li>
+	      </ul>
               </td>
             </tr>
           </tbody></table>
@@ -109,14 +115,14 @@
           <img src='images/NeuralODF.jpg' width=100%>
         </div>
         <script type="text/javascript">
-          function flash_cache_start() {
+          function NeuralODF_start() {
             document.getElementById('NeuralODF_image').style.opacity = "1";
           }
 
-          function flash_cache_stop() {
+          function NeuralODF_stop() {
             document.getElementById('NeuralODF_image').style.opacity = "0";
           }
-          flash_cache_stop()
+          NeuralODF_stop()
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
@@ -137,6 +143,88 @@
         </p>
       </td>
     </tr>
+
+
+    <tr onmouseout="MIMOVRN_stop()" onmouseover="MIMOVRN_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='MIMOVRN_image'><video  width=100% muted autoplay loop>
+          <source src="images/MIMOVRN.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video></div>
+          <img src='images/MIMOVRN.jpg' width=100%>
+        </div>
+        <script type="text/javascript">
+          function MIMOVRN_start() {
+            document.getElementById('MIMOVRN_null').style.opacity = "1";
+          }
+
+          function MIMOVRN_stop() {
+            document.getElementById('MIMOVRN_null').style.opacity = "0";
+          }
+          MIMOVRN_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <a href="https://ding3820.github.io/MIMO-VRN/">
+          <span class="papertitle">Video Rescaling Networks with Joint Optimization Strategies for Downscaling and Upscaling</span>
+        </a>
+        <br>
+	Yan-Cheng Huang, Yi-Hsin Chen, <strong>Cheng-You Lu</strong>, Hui-Po Wang, Wen-Hsiao Peng, Ching-Chun Huang
+        <br>
+        <em>CVPR</em>, 2021
+        <br>
+        <a href="https://ding3820.github.io/MIMO-VRN/">project page</a>
+        /
+        <a href="https://arxiv.org/abs/2103.14858">arXiv</a>
+        <p></p>
+        <p>
+        Multi-input Multi-output Video Rescaling Network (MIMO-VRN), a new strategy for downscaling and upscaling a group of video frames simultaneously.  
+        </p>
+      </td>
+    </tr>
+
+
+    <tr onmouseout="WSGCN_stop()" onmouseover="WSGCN_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='WSGCN_image'><video  width=100% muted autoplay loop>
+          <source src="images/WSGCN.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video></div>
+          <img src='images/WSGCN.jpg' width=100%>
+        </div>
+        <script type="text/javascript">
+          function WSGCN_start() {
+            document.getElementById('WSGCN_Image').style.opacity = "1";
+          }
+
+          function WSGCN_stop() {
+            document.getElementById('WSGCN_Image').style.opacity = "0";
+          }
+          WSGCN_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <a href="https://mapl.cs.nycu.edu.tw/WSGCN/">
+          <span class="papertitle">Weakly-Supervised Image Semantic Segmentation Using Gaph Convolutional Networks</span>
+        </a>
+        <br>
+	Shun-Yi Pan<sup>1</sup>, <strong>Cheng-You Lu<sup>1</sup></strong>, Shih-Po Lee, Wen-Hsiao Peng
+        <br>
+        <em>ICME</em>, 2021
+        <br>
+        <a href="https://mapl.cs.nycu.edu.tw/WSGCN/">project page</a>
+        /
+        <a href="https://arxiv.org/abs/2103.16762">arXiv</a>
+        <p></p>
+        <p>
+        A GCN-based framework for weakly-supervised image semantic segmentation, improving pseudo label quality via Laplacian and entropy regularization.
+        </p>
+      </td>
+    </tr>
+
+
 
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
