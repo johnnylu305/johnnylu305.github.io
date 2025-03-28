@@ -81,7 +81,7 @@
           function aegis_stop() {
             document.getElementById('aegis_null').style.opacity = "0";
           }
-          diva360_stop()
+          aegis_stop()
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
@@ -122,7 +122,7 @@
           function HFGaussian_stop() {
             document.getElementById('HFGaussian_image').style.opacity = "0";
           }
-          NeuralODF_stop()
+          HFGaussian_stop()
         </script>
       </td>
       <td style="padding:20px;width:75%;vertical-align:middle">
@@ -140,6 +140,45 @@
         <p></p>
         <p>
           HFGaussian, a generalizable 3D Gaussian Splatting that can estimate novel views and human features, including the 3D skeleton, 3D keypoints, and dense pose, from sparse input images in real time.
+        </p>
+      </td>
+    </tr>
+
+    <tr onmouseout="Hierarchical_Graph_Learning_stop()" onmouseover="Hierarchical_Graph_Learning_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='Hierarchical_Graph_Learning_image'><video  width=100% muted autoplay loop>
+          <source src="images/Hierarchical_Graph_Learning.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video></div>
+          <img src='images/Hierarchical_Graph_Learning.png' width=100%>
+        </div>
+        <script type="text/javascript">
+          function Hierarchical_Graph_Learning_start() {
+            document.getElementById('HFGaussian_image').style.opacity = "1";
+          }
+
+          function Hierarchical_Graph_Learning_stop() {
+            document.getElementById('HFGaussian_image').style.opacity = "0";
+          }
+          Hierarchical_Graph_Learning_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <a href="data/Hierarchical_Graph_Learning_20250327.pdf">
+          <span class="papertitle">Hierarchical Graph Learning for Spectral Clustering: From Single View to Multiview</span>
+        </a>
+        <br>
+	Jie Yang, <strong>Cheng-You Lu</strong>, Chin-Teng Lin
+        <br>
+        <em>Technical Report</em>, 2024
+        <br>
+        <a href="data/Hierarchical_Graph_Learning_20250327.pdf">project page</a>
+        /
+        <a href="data/Hierarchical_Graph_Learning_20250327.pdf">arXiv</a>
+        <p></p>
+        <p>
+          A novel hierarchical graph structure captures both local and global nonlinear structures.
         </p>
       </td>
     </tr>
