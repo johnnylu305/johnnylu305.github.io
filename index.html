@@ -32,7 +32,7 @@
                 </p>
                 <p style="text-align:center">
                   <a href="mailto:cheng-you.lu@student.uts.edu.au">Email</a> &nbsp;/&nbsp;
-                  <a href="data/Resume_20250327.pdf">CV</a> &nbsp;/&nbsp;
+                  <a href="data/Resume_20251211.pdf">CV</a> &nbsp;/&nbsp;
                   <a href="https://scholar.google.com/citations?user=uQ3K_xYAAAAJ&hl=zh-TW">Scholar</a> &nbsp;/&nbsp;
                   <a href="https://github.com/johnnylu305">Github</a> &nbsp;/&nbsp;
                   <a href="https://www.linkedin.com/in/cheng-you-lu/?originalSubdomain=au">LinkedIn</a>
@@ -48,6 +48,7 @@
               <td style="padding:20px;width:100%;vertical-align:middle">
               <h2>News</h2>
               <ul style="font-size: 16px;">
+              <li>12/2025: One paper accepted by IEEE Trans on AI 2025</li>
               <li>11/2025: One paper accepted by WACV 2026</li>
               <li>11/2025: One paper accepted by AAAI 2026</li>
               <li>10/2025: Serve as a reviewer for TPAMI</li>
@@ -150,6 +151,45 @@
       </td>
     </tr>
 
+    <tr onmouseout="HFGaussian_stop()" onmouseover="HFGaussian_start()">
+      <td style="padding:20px;width:25%;vertical-align:middle">
+        <div class="one">
+          <div class="two" id='HFGaussian_image'><video  width=100% muted autoplay loop>
+          <source src="images/HFGaussian.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video></div>
+          <img src='images/HFGaussian.png' width=100%>
+        </div>
+        <script type="text/javascript">
+          function HFGaussian_start() {
+            document.getElementById('HFGaussian_image').style.opacity = "1";
+          }
+
+          function HFGaussian_stop() {
+            document.getElementById('HFGaussian_image').style.opacity = "0";
+          }
+          HFGaussian_stop()
+        </script>
+      </td>
+      <td style="padding:20px;width:75%;vertical-align:middle">
+        <a href="https://arxiv.org/abs/2411.03086">
+          <span class="papertitle">HFGaussian: Learning Generalizable Gaussian Human with Integrated Human Features</span>
+        </a>
+        <br>
+	Arnab Dey, <strong>Cheng-You Lu</strong>, Andrew I. Comport, Srinath Sridhar, Chin-Teng Lin, Jean Martinet
+        <br>
+        <em>IEEE Transactions on artificial intelligence</em>, 2025
+        <br>
+        <a href="https://github.com/arnabdeypolimi/HFGaussian_official">project page</a>
+        /
+        <a href="https://arxiv.org/abs/2411.03086">arXiv</a>
+        <p></p>
+        <p>
+          HFGaussian, a generalizable 3D Gaussian Splatting that can estimate novel views and human features, including the 3D skeleton, 3D keypoints, and dense pose, from sparse input images in real time.
+        </p>
+      </td>
+    </tr>
+
     <tr onmouseout="diva360_stop()" onmouseover="diva360_start()">
       <td style="padding:20px;width:25%;vertical-align:middle">
         <div class="one">
@@ -187,45 +227,6 @@
         <p></p>
         <p>
         AEGIS, a Human Attention-based Explainable Guidance for Intelligent Vehicle Systems, leverages a pretrained human attention model to identify critical regions of interest for decision-making.
-        </p>
-      </td>
-    </tr>
-
-    <tr onmouseout="HFGaussian_stop()" onmouseover="HFGaussian_start()">
-      <td style="padding:20px;width:25%;vertical-align:middle">
-        <div class="one">
-          <div class="two" id='HFGaussian_image'><video  width=100% muted autoplay loop>
-          <source src="images/HFGaussian.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-          </video></div>
-          <img src='images/HFGaussian.png' width=100%>
-        </div>
-        <script type="text/javascript">
-          function HFGaussian_start() {
-            document.getElementById('HFGaussian_image').style.opacity = "1";
-          }
-
-          function HFGaussian_stop() {
-            document.getElementById('HFGaussian_image').style.opacity = "0";
-          }
-          HFGaussian_stop()
-        </script>
-      </td>
-      <td style="padding:20px;width:75%;vertical-align:middle">
-        <a href="https://arxiv.org/abs/2411.03086">
-          <span class="papertitle">HFGaussian: Learning Generalizable Gaussian Human with Integrated Human Features</span>
-        </a>
-        <br>
-	Arnab Dey, <strong>Cheng-You Lu</strong>, Andrew I. Comport, Srinath Sridhar, Chin-Teng Lin, Jean Martinet
-        <br>
-        <em>Technical Report</em>, 2024
-        <br>
-        <a href="https://arxiv.org/abs/2411.03086">project page</a>
-        /
-        <a href="https://arxiv.org/abs/2411.03086">arXiv</a>
-        <p></p>
-        <p>
-          HFGaussian, a generalizable 3D Gaussian Splatting that can estimate novel views and human features, including the 3D skeleton, 3D keypoints, and dense pose, from sparse input images in real time.
         </p>
       </td>
     </tr>
