@@ -1,0 +1,166 @@
+{
+  "DF3DV-1K": [
+    {
+      "method": "3DGS",
+      "psnr": 17.93,
+      "lpips": 0.330,
+      "ssim": 0.630,
+      "paper": "https://arxiv.org/abs/2308.04079",
+      "code": "https://github.com/graphdeco-inria/gaussian-splatting"
+    }
+    ,{
+      "method": "T-3DGS",
+      "psnr": 18.92,
+      "lpips": 0.263,
+      "ssim": 0.682,
+      "paper": "https://arxiv.org/abs/2412.00155",
+      "code": "https://github.com/Vadim200116/T-3DGS"
+    }
+    ,{
+      "method": "T-3DGS-TMR",
+      "psnr": 18.11,
+      "lpips": 0.296,
+      "ssim": 0.657,
+      "paper": "https://arxiv.org/abs/2412.00155",
+      "code": "https://github.com/Vadim200116/T-3DGS"
+    }
+    ,{
+      "method": "WildGaussians",
+      "psnr": 18.78,
+      "lpips": 0.293,
+      "ssim": 0.669,
+      "paper": "https://arxiv.org/abs/2407.08447",
+      "code": "https://github.com/jkulhanek/wild-gaussians/"
+    }
+    ,{
+      "method": "SpotLessSplats",
+      "psnr": 19.75,
+      "lpips": 0.263,
+      "ssim": 0.694,
+      "paper": "https://arxiv.org/abs/2406.20055",
+      "code": "https://github.com/lilygoli/SpotLessSplats"
+    }
+    ,{
+      "method": "DeSplat",
+      "psnr": 19.26,
+      "lpips": 0.249,
+      "ssim": 0.681,
+      "paper": "https://arxiv.org/abs/2411.19756",
+      "code": "https://github.com/AaltoML/desplat/"
+    }
+    ,{
+      "method": "DeGauss",
+      "psnr": 20.00,
+      "lpips": 0.243,
+      "ssim": 0.714,
+      "paper": "https://arxiv.org/abs/2503.13176",
+      "code": "https://github.com/BatFaceWayne/DeGauss"
+    }
+    ,{
+      "method": "OCSplats",
+      "psnr": 20.02,
+      "lpips": 0.247,
+      "ssim": 0.710,
+      "paper": "https://arxiv.org/abs/2508.01239",
+      "code": "https://github.com/HanLingsgjk/OCSplats"
+    }
+    ,{
+      "method": "RobustSplat",
+      "psnr": 20.13,
+      "lpips": 0.226,
+      "ssim": 0.714,
+      "paper": "https://arxiv.org/abs/2506.02751",
+      "code": "https://github.com/fcyycf/RobustSplat"
+    }
+    ,{
+      "method": "AsymGS",
+      "psnr": 20.49,
+      "lpips": 0.229,
+      "ssim": 0.735,
+      "paper": "https://arxiv.org/abs/2506.03538",
+      "code": "https://github.com/steveli88/AsymGS"
+    }
+  ],
+  "DF3DV-41": [
+    {
+      "method": "3DGS",
+      "psnr": 18.10,
+      "lpips": 0.331,
+      "ssim": 0.620,
+      "paper": "https://arxiv.org/abs/2308.04079",
+      "code": "https://github.com/graphdeco-inria/gaussian-splatting"
+    }
+    ,{
+      "method": "T-3DGS",
+      "psnr": 19.00,
+      "lpips": 0.259,
+      "ssim": 0.672,
+      "paper": "https://arxiv.org/abs/2412.00155",
+      "code": "https://github.com/Vadim200116/T-3DGS"
+    }
+    ,{
+      "method": "T-3DGS-TMR",
+      "psnr": 18.41,
+      "lpips": 0.279,
+      "ssim": 0.654,
+      "paper": "https://arxiv.org/abs/2412.00155",
+      "code": "https://github.com/Vadim200116/T-3DGS"
+    }
+    ,{
+      "method": "WildGaussians",
+      "psnr": 19.26,
+      "lpips": 0.285,
+      "ssim": 0.670,
+      "paper": "https://arxiv.org/abs/2407.08447",
+      "code": "https://github.com/jkulhanek/wild-gaussians/"
+    }
+    ,{
+      "method": "SpotLessSplats",
+      "psnr": 19.37,
+      "lpips": 0.287,
+      "ssim": 0.662,
+      "paper": "https://arxiv.org/abs/2406.20055",
+      "code": "https://github.com/lilygoli/SpotLessSplats"
+    }
+    ,{
+      "method": "DeSplat",
+      "psnr": 19.31,
+      "lpips": 0.248,
+      "ssim": 0.662,
+      "paper": "https://arxiv.org/abs/2411.19756",
+      "code": "https://github.com/AaltoML/desplat/"
+    }
+    ,{
+      "method": "DeGauss",
+      "psnr": 19.98,
+      "lpips": 0.236,
+      "ssim": 0.695,
+      "paper": "https://arxiv.org/abs/2503.13176",
+      "code": "https://github.com/BatFaceWayne/DeGauss"
+    }
+    ,{
+      "method": "OCSplats",
+      "psnr": 19.84,
+      "lpips": 0.249,
+      "ssim": 0.689,
+      "paper": "https://arxiv.org/abs/2508.01239",
+      "code": "https://github.com/HanLingsgjk/OCSplats"
+    }
+    ,{
+      "method": "RobustSplat",
+      "psnr": 19.95,
+      "lpips": 0.232,
+      "ssim": 0.696,
+      "paper": "https://arxiv.org/abs/2506.02751",
+      "code": "https://github.com/fcyycf/RobustSplat"
+    }
+    ,{
+      "method": "AsymGS",
+      "psnr": 20.35,
+      "lpips": 0.247,
+      "ssim": 0.712,
+      "paper": "https://arxiv.org/abs/2506.03538",
+      "code": "https://github.com/steveli88/AsymGS"
+    }
+  ]
+}

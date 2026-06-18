@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DF3DV-1K: A Large-Scale Dataset and Benchmark for Distractor-Free Novel View Synthesis</title>
+
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --card: #ffffff;
+      --text: #1f1f1f;
+      --muted: #666666;
+      --border: #dddddd;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      --radius: 16px;
+      --max-width: 1000px;
+      --blue: #2563eb;
+      --purple: #7c3aed;
+      --github: #24292f;
+      --github-hover: #1b1f23;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .page-title {
+      margin: 0;
+      font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: 0.01em;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .venue-badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 15px;
+      border-radius: 999px;
+      background: linear-gradient(
+        135deg,
+        rgba(220, 38, 38, 0.10),
+        rgba(239, 68, 68, 0.15)
+      );
+      color: #b91c1c;
+      border: 1px solid rgba(220, 38, 38, 0.15);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .authors {
+      margin-top: 18px;
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+
+    .authors a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .authors a:hover {
+      text-decoration: underline;
+    }
+
+    .affiliations {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contribution {
+      margin-top: 8px;
+      color: #888888;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .links {
+      margin-top: 20px;
+    }
+
+    .links-row {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .links-row + .links-row {
+      margin-top: 10px;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #333333;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .links a:hover {
+      background: #222222;
+      transform: translateY(-1px);
+    }
+
+    .resource-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .resource-label {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0;
+      line-height: 1;
+    }
+
+    .github-btn {
+      background: var(--github) !important;
+    }
+
+    .github-btn:hover {
+      background: var(--github-hover) !important;
+    }
+
+    .github-icon {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .video-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .video-block,
+    .content-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .video-header {
+      padding: 18px 18px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      text-align: center;
+    }
+
+    .video-kicker {
+      font-size: 0.86rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .video-heading {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      text-align: center;
+    }
+
+    .video-wrap {
+      background: #000000;
+      width: 100%;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #000000;
+    }
+
+    .caption {
+      padding: 16px 18px 18px;
+      background: #fcfcfc;
+      border-top: 1px solid #efefef;
+    }
+
+    .caption-title {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .caption-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .content-section {
+      padding: 22px 24px;
+    }
+
+    .section-title {
+      margin: 0 0 16px;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      text-align: center;
+    }
+
+    .section-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    .leaderboard-controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 14px 0 16px;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .control-label {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-right: 2px;
+    }
+
+    .control-button {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #f7f7f7;
+      color: #333333;
+      padding: 7px 13px;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: background 0.2s ease, color 0.2s ease, border 0.2s ease;
+    }
+
+    .control-button:hover {
+      background: #eeeeee;
+    }
+
+    .control-button.active {
+      background: #333333;
+      color: #ffffff;
+      border-color: #333333;
+    }
+
+    .leaderboard-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid #eeeeee;
+      border-radius: 12px;
+    }
+
+    .leaderboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .leaderboard-table th,
+    .leaderboard-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #eeeeee;
+      font-size: 0.95rem;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .leaderboard-table th {
+      background: #fafafa;
+      color: #444444;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .leaderboard-table td.metric,
+    .leaderboard-table th.metric {
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .leaderboard-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .leaderboard-table tbody tr:hover {
+      background: #fbfbfb;
+    }
+
+    .rank-cell {
+      width: 72px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .method-cell {
+      font-weight: 700;
+    }
+
+    .rank-cell,
+    .method-cell,
+    .leaderboard-table td:nth-child(6),
+    .leaderboard-table td:nth-child(7),
+    .leaderboard-table th:nth-child(6),
+    .leaderboard-table th:nth-child(7) {
+      text-align: center;
+    }
+
+    .selected-metric {
+      color: var(--blue);
+    }
+
+
+    .leaderboard-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #333333;
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 700;
+      white-space: nowrap;
+      border: 1px solid #e5e7eb;
+    }
+
+    .leaderboard-link:hover {
+      background: #e5e7eb;
+    }
+
+    .leaderboard-link.github-mini {
+      background: #24292f;
+      color: #ffffff;
+      border-color: #24292f;
+    }
+
+    .leaderboard-link.github-mini:hover {
+      background: #1b1f23;
+    }
+
+    .leaderboard-link .github-icon-mini {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .leaderboard-message {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+
+    .team-columns {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .team-panel {
+      padding: 18px 16px;
+      border: 1px solid #eeeeee;
+      border-radius: 14px;
+      background: #fcfcfc;
+    }
+
+    .team-subtitle {
+      margin: 0 0 16px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px 16px;
+    }
+
+    .honor-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .team-member {
+      text-align: center;
+    }
+
+    .team-photo {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.12));
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+    }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .team-name {
+      margin: 0;
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .team-name a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .team-name a:hover {
+      text-decoration: underline;
+    }
+
+    .team-role {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .bibtex-box {
+      margin: 0;
+      padding: 16px 18px;
+      overflow-x: auto;
+      border-radius: 12px;
+      background: #f3f4f6;
+      color: #1f2937;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      text-align: left;
+      white-space: pre;
+    }
+
+    code {
+      background: #eeeeee;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.92em;
+    }
+
+    sup {
+      font-size: 0.72em;
+      line-height: 0;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 20px 12px 40px;
+      }
+
+      .page-title {
+        font-size: 1.85rem;
+      }
+
+      .authors {
+        font-size: 1.02rem;
+      }
+
+      .links a {
+        padding: 9px 14px;
+        font-size: 0.92rem;
+      }
+
+      .content-section {
+        padding: 18px 16px;
+      }
+
+      .leaderboard-controls {
+        display: block;
+      }
+
+      .control-group + .control-group {
+        margin-top: 12px;
+      }
+
+
+      .team-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid,
+      .honor-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .team-photo {
+        width: 96px;
+        height: 96px;
+      }
+
+      .video-header,
+      .caption {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+
+    .gradient-text {
+       background: linear-gradient(
+       90deg,
+       #0066ff 0%,
+       #4b6cff 30%,
+       #9b59ff 60%,
+       #ff3333 100%
+     );
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+     color: transparent;
+   }
+
+  </style>
+</head>
+
+
+
+<body>
+  <main class="page">
+    <header class="page-header">
+      <h1 class="page-title">
+        <span class="gradient-text">DF3DV-1K</span>: A Large-Scale Dataset and Benchmark for <span class="gradient-text">Distractor-Free</span> Novel View Synthesis
+      </h1>
+
+      <div class="venue-badge">ECCV 2026</div>
+
+      <div class="authors">
+	      <a href="https://johnnylu305.github.io/">Cheng-You Lu</a><sup>1</sup>, Yi-Shan Hung<sup>2*</sup>, Wei-Ling Chi<sup>3*</sup>, Hao-Ping Wang<sup>3*</sup>, Charlie Li-Ting Tsai<sup>1*</sup>, Yu-Cheng Chang<sup>1</sup>, <a href="https://yulunalexliu.github.io/">Yu-Lun Liu</a><sup>3</sup>, Thomas Do</a><sup>1</sup>, <a href="https://scholar.google.com/citations?user=nubkF1cAAAAJ&hl=zh-TW">Chin-Teng Lin</a><sup>1</sup>
+      </div>
+
+      <div class="affiliations">
+        <sup>1</sup> University of Technology Sydney, <sup>2</sup> University of Sydney, <sup>3</sup> National Yang Ming Chiao Tung University
+      </div>
+
+      <div class="contribution">
+        * Equal Contribution
+      </div>
+
+      <div class="links">
+        <div class="links-row">
+          <a href="https://arxiv.org/abs/2604.13416">
+            <span class="resource-icon">📄</span>
+            <span class="resource-label">Paper</span>
+          </a>
+          <a href="https://huggingface.co/datasets/ChengYou305/DF3DV-1K">
+            <span class="resource-icon">🤗</span>
+            <span class="resource-label">DF3DV-1K Dataset</span>
+          </a>
+          <a href="#leaderboard">
+            <span class="resource-icon">🏆</span>
+            <span class="resource-label">DF3DV Leaderboard</span>
+          </a>
+          <a href="https://github.com/johnnylu305/DF3DV" class="github-btn">
+            <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+                -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+                .07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95
+                0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
+                0 0 .67-.21 2.2.82A7.65 7.65 0 018 4.84
+                c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82
+                .44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
+                0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+                0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8
+                c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            <span class="resource-label">DF3DV Code</span>
+          </a>
+        </div>
+
+        <div class="links-row">
+          <a href="https://huggingface.co/datasets/ChengYou305/DF3DV-1K-Fixer">
+            <span class="resource-icon">🤗</span>
+            <span class="resource-label">DI²FIX Dataset</span>
+          </a>
+          <a href="https://chengyou305-di2fix-demo.hf.space/">
+            <span class="resource-icon">🤗</span>
+            <span class="resource-label">DI²FIX Demo</span>
+          </a>
+          <a href="https://github.com/johnnylu305/DI2FIX" class="github-btn">
+            <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+                -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+                .07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95
+                0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
+                0 0 .67-.21 2.2.82A7.65 7.65 0 018 4.84
+                c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82
+                .44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
+                0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+                0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8
+                c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            <span class="resource-label">DI²FIX Code</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="video-list">
+      <article class="video-block">
+        <div class="video-header">
+          <div class="video-kicker"></div>
+          <h2 class="video-heading">DF3DV-1K</h2>
+        </div>
+        <div class="video-wrap">
+          <video autoplay loop muted playsinline controls preload="metadata">
+            <source src="videos/df3dv.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="caption">
+          <p class="caption-title"></p>
+          <p class="caption-text">
+            DF3DV-1K is a large-scale, diverse, distractor-free dataset that provides both cluttered and clean images for each scene.
+          </p>
+        </div>
+      </article>
+
+      <section class="content-section" id="abstract">
+        <h2 class="section-title">Abstract</h2>
+        <p class="section-text" style="text-align: justify; text-align-last: left; line-height: 1.7;">
+Advances in radiance fields have enabled photorealistic novel view synthesis. In several domains, large-scale real-world datasets have been developed to support comprehensive benchmarking and to facilitate progress beyond scene-specific reconstruction. However, for distractor-free radiance fields, a large-scale dataset with clean and cluttered images per scene remains lacking, limiting the development. To address
+this gap, we introduce DF3DV-1K, a large-scale real-world dataset comprising 1,048 scenes, each providing clean and cluttered image sets for benchmarking. In total, the dataset contains 89,924 images captured using consumer cameras to mimic casual capture, spanning 128 distractor types and 161 scene themes across indoor and outdoor environments. A curated subset of 41 scenes, DF3DV-41, is systematically designed to evaluate the robustness of distractor-free radiance field methods under challenging scenarios. Using DF3DV-1K, we benchmark nine recent distractor-free radiance field methods and 3D Gaussian Splatting, identifying the most robust methods and the most challenging scenarios. Beyond benchmarking, we demonstrate an application of DF3DV-1K by fine-tuning a diffusion-based 2D enhancer to improve radiance field methods, achieving average improvements of 0.96 dB PSNR and 0.057 LPIPS on the held-out set (e.g., DF3DV-41) and the On-the-go dataset. We hope DF3DV-1K facilitates the development of distractor-free vision and promotes progress beyond scene-specific approaches.
+        </p>
+      </section>
+
+      <section class="content-section" id="leaderboard">
+        <h2 class="section-title">Leaderboard</h2>
+        <div class="leaderboard-controls">
+          <div class="control-group" aria-label="Dataset selector">
+            <span class="control-label">Dataset</span>
+            <button class="control-button active" data-dataset="DF3DV-1K">DF3DV-1K</button>
+            <button class="control-button" data-dataset="DF3DV-41">DF3DV-41</button>
+          </div>
+
+          <div class="control-group" aria-label="Metric selector">
+            <span class="control-label">Rank by</span>
+            <button class="control-button active" data-metric="PSNR">PSNR ↑</button>
+            <button class="control-button" data-metric="SSIM">SSIM ↑</button>
+            <button class="control-button" data-metric="LPIPS">LPIPS ↓</button>
+          </div>
+        </div>
+
+        <div class="leaderboard-table-wrap">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Method</th>
+                <th class="metric" data-col="PSNR">PSNR ↑</th>
+                <th class="metric" data-col="SSIM">SSIM ↑</th>
+                <th class="metric" data-col="LPIPS">LPIPS ↓</th>
+                <th>Paper</th>
+                <th>Code</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+              <tr>
+                <td colspan="7">Loading leaderboard...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="leaderboard-message" id="leaderboard-message"></p>
+      </section>
+
+      <article class="video-block">
+        <div class="video-header">
+          <div class="video-kicker"></div>
+          <h2 class="video-heading">DF3DV-41</h2>
+        </div>
+        <div class="video-wrap">
+          <video autoplay loop muted playsinline controls preload="metadata">
+            <source src="videos/base.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="caption">
+          <p class="caption-title"></p>
+          <p class="caption-text">
+            We systematically design several challenging scenarios to facilitate and stress-test the development of radiance fields.
+            This also serves as a “zoom-in-no-more” visual benchmark.
+          </p>
+        </div>
+      </article>
+
+      <article class="video-block">
+        <div class="video-header">
+          <div class="video-kicker"></div>
+          <h2 class="video-heading">DI<sup>2</sup>FIX</h2>
+        </div>
+        <div class="video-wrap">
+          <video autoplay loop muted playsinline controls preload="metadata">
+            <source src="videos/fix.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="caption">
+          <p class="caption-title"></p>
+          <p class="caption-text">
+            Going beyond scene-specific methods, we introduce DI<sup>2</sup>FIX (Distractor-Free DIFIX). Although not perfect,
+            DI<sup>2</sup>FIX can largely mitigate the impact of distractor artifacts and improve rendering quality even for the vanilla 3DGS.
+          </p>
+        </div>
+      </article>
+
+
+      <section class="content-section" id="team">
+        <h2 class="section-title">Team</h2>
+
+        <div class="team-columns">
+          <div class="team-panel">
+            <h3 class="team-subtitle">DF3DV-1K Team Members</h3>
+            <div class="team-grid">
+              <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/cheng-you-lu.jpg" alt="Cheng-You Lu">
+                </div>
+                <p class="team-name"><a href="https://johnnylu305.github.io/">Cheng-You Lu</a></p>
+              </div>
+
+              <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/yi-shan-hung.jpg" alt="Yi-Shan Hung">
+                </div>
+                <p class="team-name">Yi-Shan Hung</p>
+              </div>
+
+              <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/wei-ling-chi.jpg" alt="Wei-Ling Chi">
+                </div>
+                <p class="team-name">Wei-Ling Chi</p>
+              </div>
+
+              <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/hao-ping-wang.jpg" alt="Hao-Ping Wang">
+                </div>
+                <p class="team-name">Hao-Ping Wang</p>
+              </div>
+
+              <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/charlie-li-ting-tsai.jpg" alt="Charlie Li-Ting Tsai">
+                </div>
+                <p class="team-name">Charlie Li-Ting Tsai</p>
+              </div>
+
+              <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/yu-cheng-chang.jpg" alt="Yu-Cheng Chang">
+                </div>
+                <p class="team-name">Yu-Cheng Chang</p>
+              </div>
+
+	      <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/yu-lun-liu.jpg" alt="Yu-Lun Liu">
+                </div>
+                  <p class="team-name"><a href="https://yulunalexliu.github.io/">Yu-Lun Liu</a></p>
+              </div>
+
+	      <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/thomas-do.webp" alt="Thomas Do">
+                </div>
+                  <p class="team-name">Thomas Do</p>
+              </div>
+
+	      <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/chin-teng-lin.jpg" alt="Chin-Teng Lin">
+                </div>
+                  <p class="team-name"><a href="https://scholar.google.com/citations?user=nubkF1cAAAAJ&hl=zh-TW">Chin-Teng Lin</a></p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="team-panel">
+            <h3 class="team-subtitle">Honorary Members</h3>
+            <div class="team-grid honor-grid">
+              <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/fu-jung-liu.jpg" alt="Fu-Jung Liu">
+                </div>
+                <p class="team-name">Fu-Jung Liu</p>
+              </div>
+
+              <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/li-chen-liu.jpg" alt="Li-Chen Liu">
+                </div>
+                <p class="team-name">Li-Chen Liu</p>
+              </div>
+
+              <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/su-lan-liu.jpg" alt="Su-Lan Liu">
+                </div>
+                <p class="team-name">Su-Lan Liu</p>
+              </div>
+
+              <div class="team-member">
+                <div class="team-photo">
+                  <img src="images/team/yu-jun-huang.jpg" alt="Yu-Jun Huang">
+                </div>
+                <p class="team-name">Yu-Jun Huang</p>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="bibtex">
+        <h2 class="section-title">BibTeX</h2>
+        <pre class="bibtex-box"><code>@article{lu2026df3dv,
+  title={DF3DV-1K: A Large-Scale Dataset and Benchmark for Distractor-Free Novel View Synthesis},
+  author={Lu, Cheng-You and Hung, Yi-Shan and Chi, Wei-Ling and Wang, Hao-Ping and Tsai, Charlie Li-Ting and Chang, Yu-Cheng and Liu, Yu-Lun and Do, Thomas and Lin, Chin-Teng},
+  journal={arXiv preprint arXiv:2604.13416},
+  year={2026}
+}</code></pre>
+      </section>
+    </section>
+  </main>
+
+
+  <script>
+    const leaderboardFile = 'leaderboards/leaderboards.json';
+
+    const metricDirection = {
+      PSNR: 'desc',
+      SSIM: 'desc',
+      LPIPS: 'asc'
+    };
+
+    let currentDataset = 'DF3DV-1K';
+    let currentMetric = 'PSNR';
+    let leaderboardData = null;
+
+    const leaderboardBody = document.getElementById('leaderboard-body');
+    const leaderboardMessage = document.getElementById('leaderboard-message');
+
+    function toNumber(value) {
+      const num = Number.parseFloat(String(value).replace(/,/g, ''));
+      return Number.isFinite(num) ? num : Number.NaN;
+    }
+
+    function formatMetric(value, metric) {
+      const num = toNumber(value);
+      if (!Number.isFinite(num)) return '-';
+      return metric === 'PSNR' ? num.toFixed(2) : num.toFixed(3);
+    }
+
+    async function loadLeaderboards() {
+      if (leaderboardData) return leaderboardData;
+
+      const response = await fetch(leaderboardFile, { cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error(`Cannot load ${leaderboardFile}`);
+      }
+
+      leaderboardData = await response.json();
+      return leaderboardData;
+    }
+
+    function normalizeRows(rows) {
+      if (!Array.isArray(rows)) return [];
+
+      return rows.map((row) => ({
+        method: row.method || row['METHOD NAME'] || row.METHOD || row.name || row.NAME || '',
+        PSNR: row.psnr ?? row.PSNR ?? '',
+        SSIM: row.ssim ?? row.SSIM ?? '',
+        LPIPS: row.lpips ?? row.LPIPS ?? '',
+        paper: row.paper || row.Paper || row.PAPER || '',
+        code: row.code || row.Code || row.CODE || ''
+      })).filter((row) => row.method);
+    }
+
+    function updateActiveButtons() {
+      document.querySelectorAll('[data-dataset]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.dataset === currentDataset);
+      });
+
+      document.querySelectorAll('[data-metric]').forEach((button) => {
+        button.classList.toggle('active', button.dataset.metric === currentMetric);
+      });
+
+      document.querySelectorAll('[data-col]').forEach((cell) => {
+        cell.classList.toggle('selected-metric', cell.dataset.col === currentMetric);
+      });
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function safeUrl(value) {
+      const url = String(value || '').trim();
+      if (!url) return '';
+      if (
+        url.startsWith('https://') ||
+        url.startsWith('http://') ||
+        url.startsWith('#') ||
+        url.startsWith('./') ||
+        url.startsWith('../') ||
+        url.startsWith('/')
+      ) {
+        return url;
+      }
+      return '';
+    }
+
+    function paperLink(url) {
+      const href = safeUrl(url);
+      if (!href) return '-';
+      return `<a class="leaderboard-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">📄 Paper</a>`;
+    }
+
+    function codeLink(url) {
+      const href = safeUrl(url);
+      if (!href) return '-';
+      return `
+        <a class="leaderboard-link github-mini" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">
+          <svg class="github-icon-mini" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+              0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+              -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+              .07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95
+              0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
+              0 0 .67-.21 2.2.82A7.65 7.65 0 018 4.84
+              c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82
+              .44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
+              0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+              0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8
+              c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          Code
+        </a>`;
+    }
+
+    function renderTable(rows) {
+      const sorted = [...rows].sort((a, b) => {
+        const aValue = toNumber(a[currentMetric]);
+        const bValue = toNumber(b[currentMetric]);
+
+        if (!Number.isFinite(aValue) && !Number.isFinite(bValue)) return 0;
+        if (!Number.isFinite(aValue)) return 1;
+        if (!Number.isFinite(bValue)) return -1;
+
+        return metricDirection[currentMetric] === 'asc'
+          ? aValue - bValue
+          : bValue - aValue;
+      });
+
+      leaderboardBody.innerHTML = sorted.map((row, index) => `
+        <tr>
+          <td class="rank-cell">${index + 1}</td>
+          <td class="method-cell">${escapeHtml(row.method)}</td>
+          <td class="metric">${formatMetric(row.PSNR, 'PSNR')}</td>
+          <td class="metric">${formatMetric(row.SSIM, 'SSIM')}</td>
+          <td class="metric">${formatMetric(row.LPIPS, 'LPIPS')}</td>
+          <td>${paperLink(row.paper)}</td>
+          <td>${codeLink(row.code)}</td>
+        </tr>
+      `).join('');
+
+      leaderboardMessage.innerHTML =
+  	`Please follow the <a href="https://github.com/johnnylu305/DF3DV/tree/main/DF3DV_Benchmark#leaderboard-file-preparation" target="_blank" rel="noopener noreferrer">submission instructions</a> to submit your result to the official leaderboard.`;
+    }
+
+    async function refreshLeaderboard() {
+      updateActiveButtons();
+      leaderboardBody.innerHTML = '<tr><td colspan="7">Loading leaderboard...</td></tr>';
+      leaderboardMessage.textContent = '';
+
+      try {
+        const data = await loadLeaderboards();
+        const rows = normalizeRows(data[currentDataset]);
+
+        if (!rows.length) {
+          leaderboardBody.innerHTML = '<tr><td colspan="7">No valid rows found for this dataset.</td></tr>';
+          leaderboardMessage.textContent =
+            'Expected JSON keys: "DF3DV-1K" and "DF3DV-41". Each row should contain method, psnr, lpips, ssim, paper, and code.';
+          return;
+        }
+
+        renderTable(rows);
+      } catch (error) {
+        leaderboardBody.innerHTML = '<tr><td colspan="7">Leaderboard JSON not found or cannot be loaded.</td></tr>';
+        leaderboardMessage.innerHTML =
+          'Place the JSON file at <code>leaderboards/leaderboards.json</code>. ' +
+          'For local testing, run <code>python -m http.server 8000</code> and open the page through localhost.';
+      }
+    }
+
+    document.querySelectorAll('[data-dataset]').forEach((button) => {
+      button.addEventListener('click', () => {
+        currentDataset = button.dataset.dataset;
+        refreshLeaderboard();
+      });
+    });
+
+    document.querySelectorAll('[data-metric]').forEach((button) => {
+      button.addEventListener('click', () => {
+        currentMetric = button.dataset.metric;
+        refreshLeaderboard();
+      });
+    });
+
+    refreshLeaderboard();
+  </script>
+</body>
+</html>
