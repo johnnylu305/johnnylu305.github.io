@@ -720,11 +720,12 @@ this gap, we introduce DF3DV-1K, a large-scale real-world dataset comprising 1,0
                 <th class="metric" data-col="LPIPS">LPIPS ↓</th>
                 <th>Paper</th>
                 <th>Code</th>
+		<th>Venue</th>
               </tr>
             </thead>
             <tbody id="leaderboard-body">
               <tr>
-                <td colspan="7">Loading leaderboard...</td>
+                <td colspan="8">Loading leaderboard...</td>
               </tr>
             </tbody>
           </table>
@@ -938,15 +939,15 @@ this gap, we introduce DF3DV-1K, a large-scale real-world dataset comprising 1,0
 
     function normalizeRows(rows) {
       if (!Array.isArray(rows)) return [];
-
       return rows.map((row) => ({
         method: row.method || row['METHOD NAME'] || row.METHOD || row.name || row.NAME || '',
         PSNR: row.psnr ?? row.PSNR ?? '',
         SSIM: row.ssim ?? row.SSIM ?? '',
         LPIPS: row.lpips ?? row.LPIPS ?? '',
         paper: row.paper || row.Paper || row.PAPER || '',
-        code: row.code || row.Code || row.CODE || ''
-      })).filter((row) => row.method);
+        code: row.code || row.Code || row.CODE || '',
+        venue: row.venue || row.Venue || row.VENUE || ''
+      }))
     }
 
     function updateActiveButtons() {
@@ -1016,6 +1017,11 @@ this gap, we introduce DF3DV-1K, a large-scale real-world dataset comprising 1,0
         </a>`;
     }
 
+    function venueText(value) {
+      const text = String(value || '').trim();
+      return text ? escapeHtml(text) : '-';
+    }
+
     function renderTable(rows) {
       const sorted = [...rows].sort((a, b) => {
         const aValue = toNumber(a[currentMetric]);
@@ -1039,6 +1045,7 @@ this gap, we introduce DF3DV-1K, a large-scale real-world dataset comprising 1,0
           <td class="metric">${formatMetric(row.LPIPS, 'LPIPS')}</td>
           <td>${paperLink(row.paper)}</td>
           <td>${codeLink(row.code)}</td>
+	  <td>${venueText(row.venue)}</td>
         </tr>
       `).join('');
 

@@ -6,7 +6,8 @@
       "lpips": 0.330,
       "ssim": 0.630,
       "paper": "https://arxiv.org/abs/2308.04079",
-      "code": "https://github.com/graphdeco-inria/gaussian-splatting"
+      "code": "https://github.com/graphdeco-inria/gaussian-splatting",
+      "venue": "TOG 2023"
     }
     ,{
       "method": "T-3DGS",
@@ -14,7 +15,8 @@
       "lpips": 0.263,
       "ssim": 0.682,
       "paper": "https://arxiv.org/abs/2412.00155",
-      "code": "https://github.com/Vadim200116/T-3DGS"
+      "code": "https://github.com/Vadim200116/T-3DGS",
+      "venue": "arXiv"
     }
     ,{
       "method": "T-3DGS-TMR",
@@ -22,7 +24,8 @@
       "lpips": 0.296,
       "ssim": 0.657,
       "paper": "https://arxiv.org/abs/2412.00155",
-      "code": "https://github.com/Vadim200116/T-3DGS"
+      "code": "https://github.com/Vadim200116/T-3DGS",
+      "venue": "arXiv"
     }
     ,{
       "method": "WildGaussians",
@@ -30,7 +33,8 @@
       "lpips": 0.293,
       "ssim": 0.669,
       "paper": "https://arxiv.org/abs/2407.08447",
-      "code": "https://github.com/jkulhanek/wild-gaussians/"
+      "code": "https://github.com/jkulhanek/wild-gaussians/",
+      "venue": "NeurIPS 2024"
     }
     ,{
       "method": "SpotLessSplats",
@@ -38,7 +42,8 @@
       "lpips": 0.263,
       "ssim": 0.694,
       "paper": "https://arxiv.org/abs/2406.20055",
-      "code": "https://github.com/lilygoli/SpotLessSplats"
+      "code": "https://github.com/lilygoli/SpotLessSplats",
+      "venue": "TOG 2025"
     }
     ,{
       "method": "DeSplat",
@@ -46,7 +51,8 @@
       "lpips": 0.249,
       "ssim": 0.681,
       "paper": "https://arxiv.org/abs/2411.19756",
-      "code": "https://github.com/AaltoML/desplat/"
+      "code": "https://github.com/AaltoML/desplat/",
+      "venue": "CVPR 2025"
     }
     ,{
       "method": "DeGauss",
@@ -54,7 +60,8 @@
       "lpips": 0.243,
       "ssim": 0.714,
       "paper": "https://arxiv.org/abs/2503.13176",
-      "code": "https://github.com/BatFaceWayne/DeGauss"
+      "code": "https://github.com/BatFaceWayne/DeGauss",
+      "venue": "ICCV 2025"
     }
     ,{
       "method": "OCSplats",
@@ -62,7 +69,8 @@
       "lpips": 0.247,
       "ssim": 0.710,
       "paper": "https://arxiv.org/abs/2508.01239",
-      "code": "https://github.com/HanLingsgjk/OCSplats"
+      "code": "https://github.com/HanLingsgjk/OCSplats",
+      "venue": "ICCV 2025"
     }
     ,{
       "method": "RobustSplat",
@@ -70,7 +78,8 @@
       "lpips": 0.226,
       "ssim": 0.714,
       "paper": "https://arxiv.org/abs/2506.02751",
-      "code": "https://github.com/fcyycf/RobustSplat"
+      "code": "https://github.com/fcyycf/RobustSplat",
+      "venue": "ICCV 2025"
     }
     ,{
       "method": "AsymGS",
@@ -78,7 +87,8 @@
       "lpips": 0.229,
       "ssim": 0.735,
       "paper": "https://arxiv.org/abs/2506.03538",
-      "code": "https://github.com/steveli88/AsymGS"
+      "code": "https://github.com/steveli88/AsymGS",
+      "venue": "NeurIPS 2025"
     }
   ],
   "DF3DV-41": [
@@ -88,7 +98,8 @@
       "lpips": 0.331,
       "ssim": 0.620,
       "paper": "https://arxiv.org/abs/2308.04079",
-      "code": "https://github.com/graphdeco-inria/gaussian-splatting"
+      "code": "https://github.com/graphdeco-inria/gaussian-splatting",
+      "venue": "TOG 2023"
     }
     ,{
       "method": "T-3DGS",
@@ -96,7 +107,8 @@
       "lpips": 0.259,
       "ssim": 0.672,
       "paper": "https://arxiv.org/abs/2412.00155",
-      "code": "https://github.com/Vadim200116/T-3DGS"
+      "code": "https://github.com/Vadim200116/T-3DGS",
+      "venue": "arXiv"
     }
     ,{
       "method": "T-3DGS-TMR",
@@ -104,7 +116,8 @@
       "lpips": 0.279,
       "ssim": 0.654,
       "paper": "https://arxiv.org/abs/2412.00155",
-      "code": "https://github.com/Vadim200116/T-3DGS"
+      "code": "https://github.com/Vadim200116/T-3DGS",
+      "venue": "arXiv"
     }
     ,{
       "method": "WildGaussians",
@@ -112,7 +125,8 @@
       "lpips": 0.285,
       "ssim": 0.670,
       "paper": "https://arxiv.org/abs/2407.08447",
-      "code": "https://github.com/jkulhanek/wild-gaussians/"
+      "code": "https://github.com/jkulhanek/wild-gaussians/",
+      "venue": "NeurIPS 2024"
     }
     ,{
       "method": "SpotLessSplats",
@@ -120,7 +134,8 @@
       "lpips": 0.287,
       "ssim": 0.662,
       "paper": "https://arxiv.org/abs/2406.20055",
-      "code": "https://github.com/lilygoli/SpotLessSplats"
+      "code": "https://github.com/lilygoli/SpotLessSplats",
+      "venue": "TOG 2025"
     }
     ,{
       "method": "DeSplat",
@@ -128,7 +143,8 @@
       "lpips": 0.248,
       "ssim": 0.662,
       "paper": "https://arxiv.org/abs/2411.19756",
-      "code": "https://github.com/AaltoML/desplat/"
+      "code": "https://github.com/AaltoML/desplat/",
+      "venue": "CVPR 2025"
     }
     ,{
       "method": "DeGauss",
@@ -136,7 +152,8 @@
       "lpips": 0.236,
       "ssim": 0.695,
       "paper": "https://arxiv.org/abs/2503.13176",
-      "code": "https://github.com/BatFaceWayne/DeGauss"
+      "code": "https://github.com/BatFaceWayne/DeGauss",
+      "venue": "ICCV 2025"
     }
     ,{
       "method": "OCSplats",
@@ -144,7 +161,8 @@
       "lpips": 0.249,
       "ssim": 0.689,
       "paper": "https://arxiv.org/abs/2508.01239",
-      "code": "https://github.com/HanLingsgjk/OCSplats"
+      "code": "https://github.com/HanLingsgjk/OCSplats",
+      "venue": "ICCV 2025"
     }
     ,{
       "method": "RobustSplat",
@@ -152,7 +170,8 @@
       "lpips": 0.232,
       "ssim": 0.696,
       "paper": "https://arxiv.org/abs/2506.02751",
-      "code": "https://github.com/fcyycf/RobustSplat"
+      "code": "https://github.com/fcyycf/RobustSplat",
+      "venue": "ICCV 2025"
     }
     ,{
       "method": "AsymGS",
@@ -160,7 +179,8 @@
       "lpips": 0.247,
       "ssim": 0.712,
       "paper": "https://arxiv.org/abs/2506.03538",
-      "code": "https://github.com/steveli88/AsymGS"
+      "code": "https://github.com/steveli88/AsymGS",
+      "venue": "NeurIPS 2025"
     }
   ]
 }
